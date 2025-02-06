@@ -1,69 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <title>Резюме - Ермилов Василий Сергеевич</title>
     <style>
+        /* Общие настройки */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
+        :root {
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+            --primary-color: #4CAF50;
+            --secondary-color: #333;
+            --hover-color: #45a049;
+            --item-bg-light: #fff; /* Фон для светлой темы */
+            --item-bg-dark: #333; /* Фон для темной темы */
+            --item-text-light: #333; /* Текст для светлой темы */
+            --item-text-dark: #eaeaea; /* Текст для темной темы */
+        }
+
+        body.dark-theme {
+            --bg-color: #2b2b2b;
+            --text-color: #eaeaea;
+            --primary-color: #4CAF50;
+            --secondary-color: #eaeaea;
+            --hover-color: #444;
+            --item-bg-light: #333; /* Фон для темной темы */
+            --item-bg-dark: #444; /* Дополнительный темный фон */
+            --item-text-light: #eaeaea; /* Текст для темной темы */
+            --item-text-dark: #eaeaea; /* Текст для темной темы */
+        }
+
         header {
-            background-color: #4CAF50;
+            background-color: var(--primary-color);
             color: white;
             text-align: center;
             padding: 20px 0;
             display: flex;
             flex-direction: column;
             align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .photo {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             overflow: hidden;
             margin: 20px 0;
-            border: 3px solid #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 3px solid white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease-in-out;
         }
+
         .photo:hover {
             transform: scale(1.1);
         }
+
         .photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
+
         h1, h2, h3 {
-            color: #333;
+            color: var(--secondary-color);
         }
+
+        .theme-toggler, .language-switcher {
+            position: fixed;
+            top: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggler {
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .language-switcher {
+            left: 20px;
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .theme-toggler:hover, .language-switcher:hover {
+            background-color: var(--hover-color);
+        }
+
         .section {
             margin-bottom: 40px;
+            padding: 20px;
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .contact-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
+
         .skills ul, .projects ul {
             list-style: none;
             padding: 0;
         }
+
         .skills li, .projects li {
-            background-color: #fff;
+            background-color: var(--item-bg-light); /* Адаптивный фон */
+            color: var(--item-text-light); /* Адаптивный текст */
             margin: 10px 0;
             padding: 10px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
         .project-title {
             cursor: pointer;
             font-weight: bold;
@@ -71,109 +136,281 @@
             align-items: center;
             justify-content: space-between;
         }
+
         .arrow {
             transition: transform 0.3s ease-in-out;
             font-size: 16px;
         }
+
         .project-details {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-in-out;
             margin-top: 10px;
         }
+
         .project-details.open {
             max-height: 500px; /* Достаточно большой для любого контента */
         }
     </style>
 </head>
 <body>
+    <!-- Переключатель темной темы -->
+    <div class="theme-toggler" onclick="toggleTheme()">Темная тема</div>
+
+    <!-- Переключатель языка -->
+    <div class="language-switcher" onclick="switchLanguage()">RU/EN</div>
+
     <header>
         <div class="photo" onclick="togglePhoto()">
-            <!-- Заглушка для фотографии -->
-            <img id="profile-photo" src ="myname.jpg" >
+            <img id="profile-photo" src="myname.jpg" >
         </div>
-        <h1>Ермилов Василий Сергеевич</h1>
-        <p>C++ разработчик, Программист</p>
+        <h1 id="name">Ермилов Василий Сергеевич</h1>
+        <p id="position">C++ разработчик, Программист</p>
     </header>
+
     <div class="container">
-        <div class="contact-info">
-            <div>
-                <p><strong>Возраст:</strong> 20 лет</p>
-                <p><strong>Адрес:</strong> Москва, Зеленоград</p>
-            </div>
-            <div>
-                <p><strong>Телефон:</strong> +7 (964) 894-99-43</p>
-                <p><strong>Email:</strong> esvasek1337@gmail.com</p>
-            </div>
-        </div>
+        <!-- Контакты -->
         <div class="section">
-            <h2>Образование</h2>
-            <p><strong>НИУ Московский институт электронной техники (МИЭТ)</strong></p>
-            <p>Бакалавриат, Очная форма, 3 курс</p>
-            <p>Кафедра проектирования и конструирования интегральных микросхем</p>
-            <p>Направление: 11.03.04 Электроника и наноэлектроника</p>
-            <p>Специализация: Автоматизация проектирования изделий наноэлектроники</p>
-            <p>Период: 2022 - 2026</p>
+            <h2 id="contacts-title">Контакты</h2>
+            <div class="contact-info">
+                <div>
+                    <p><strong id="age-label">Возраст:</strong> <span id="age">20 лет</span></p>
+                    <p><strong id="address-label">Адрес:</strong> <span id="address">Москва, Зеленоград</span></p>
+                </div>
+                <div>
+                    <p><strong id="phone-label">Телефон:</strong> <span id="phone">+7 (964) 894-99-43</span></p>
+                    <p><strong id="email-label">Email:</strong> <span id="email">esvasek1337@gmail.com</span></p>
+                </div>
+            </div>
         </div>
+
+        <!-- Образование -->
+        <div class="section">
+            <h2 id="education-title">Образование</h2>
+            <p><strong id="university-name">НИУ Московский институт электронной техники (МИЭТ)</strong></p>
+            <p><span id="degree">Бакалавриат, Очная форма, 3 курс</span></p>
+            <p><span id="department">Кафедра проектирования и конструирования интегральных микросхем</span></p>
+            <p><span id="specialization">Направление: Электроника и наноэлектроника</span></p>
+            <p><span id="focus">Специализация: Автоматизация проектирования изделий наноэлектроники</span></p>
+            <p><span id="period">Период: 2022 - 2026</span></p>
+        </div>
+
+        <!-- Навыки -->
         <div class="section skills">
-            <h2>Навыки</h2>
+            <h2 id="skills-title">Навыки</h2>
             <ul>
-                <li>Опыт работы с инженерной графикой и компьютерной визуализацией</li>
-                <li>Опыт работы с основными структурами данных и алгоритмами</li>
-                <li>Знание основных принципов объектно-ориентированного программирования</li>
-                <li>Опыт работы с интегрированными средами разработки (IDE), такими как Visual Studio</li>
-                <li>Умение работать в команде и коммуникативные навыки</li>
-                <li>Активное изучение средств САПР</li>
+                <li id="skill-1">Опыт работы с инженерной графикой и компьютерной визуализацией</li>
+                <li id="skill-2">Опыт работы с основными структурами данных и алгоритмами</li>
+                <li id="skill-3">Знание основных принципов объектно-ориентированного программирования</li>
+                <li id="skill-4">Опыт работы с интегрированными средами разработки (IDE), такими как Visual Studio</li>
+                <li id="skill-5">Умение работать в команде и коммуникативные навыки</li>
+                <li id="skill-6">Активное изучение средств САПР</li>
             </ul>
         </div>
+
+        <!-- Проекты -->
         <div class="section projects">
-            <h2>Проекты</h2>
+            <h2 id="projects-title">Проекты</h2>
             <ul>
                 <li>
                     <div class="project-title" onclick="toggleProject(this)">
-                        Консольное приложение для управления базой данных студентов
+                        <span id="project-1-title">Консольное приложение для управления базой данных студентов</span>
                         <span class="arrow">⬇️</span>
                     </div>
                     <div class="project-details">
-                        <p>Разработка консольного приложения на C++ для управления базой данных студентов.</p>
-                        <p>Функционал: CRUD-операции (Create, Read, Update, Delete) с использованием файлового хранения данных.</p>
+                        <p><span id="project-1-desc">Разработка консольного приложения на C++ для управления базой данных студентов.</span></p>
+                        <p><span id="project-1-features">Функционал: CRUD-операции (Create, Read, Update, Delete) с использованием файлового хранения данных.</span></p>
                     </div>
                 </li>
                 <li>
                     <div class="project-title" onclick="toggleProject(this)">
-                        Проекты на Arduino Uno
+                        <span id="project-2-title">Проекты на Arduino Uno</span>
                         <span class="arrow">⬇️</span>
                     </div>
                     <div class="project-details">
                         <ul>
-                            <li>Светодиодная мигалка (Blink)</li>
-                            <li>Управление светодиодами с кнопкой (LED Control with Button)</li>
-                            <li>Измерение температуры и влажности (Temperature and Humidity Sensing)</li>
-                            <li>Управление сервоприводом (Servo Motor Control)</li>
-                            <li>Измерение расстояния с помощью ультразвукового дальномера (Ultrasonic Distance Measurement)</li>
+                            <li><span id="project-2-item-1">Светодиодная мигалка (Blink)</span></li>
+                            <li><span id="project-2-item-2">Управление светодиодами с кнопкой (LED Control with Button)</span></li>
+                            <!-- <li><span id="project-2-item-3">Измерение температуры и влажности (Temperature and Humidity Sensing)</span></li> -->
+                            <li><span id="project-2-item-4">Управление сервоприводом (Servo Motor Control)</span></li>
+                            <li><span id="project-2-item-5">Измерение расстояния с помощью ультразвукового дальномера (Ultrasonic Distance Measurement)</span></li>
                         </ul>
                     </div>
                 </li>
             </ul>
         </div>
+
+        <!-- О себе -->
         <div class="section">
-            <h2>О себе</h2>
-            <p><strong>Личные качества:</strong> Целеустремленность, стремление к самосовершенствованию, ответственный подход к задачам, способность быстро обучаться.</p>
-            <p><strong>Интересы:</strong> Фотография (любительская), создание и обработка фотографий, музыка, сериалы.</p>
-            <p><strong>Языки:</strong> Английский (Базовый).</p>
+            <h2 id="about-title">О себе</h2>
+            <p><strong id="personal-qualities">Личные качества:</strong> Целеустремленность, стремление к самосовершенствованию, ответственный подход к задачам, способность быстро обучаться.</p>
+            <p><strong id="interests">Интересы:</strong> Фотография (любительская), создание и обработка фотографий, музыка, сериалы.</p>
+            <p><strong id="languages">Языки:</strong> Английский (Базовый).</p>
         </div>
     </div>
+
     <script>
         let isDefaultPhoto = true;
+        let isDarkTheme = false;
+        let isRussian = true;
 
         function togglePhoto() {
             const photoElement = document.getElementById('profile-photo');
             if (isDefaultPhoto) {
-                photoElement.src = "smile.jpg"; // Новое изображение
+                photoElement.src = "smile.jpg";
             } else {
-                photoElement.src = "myname.jpg"; // Исходное изображение
+                photoElement.src = "myname.jpg";
             }
             isDefaultPhoto = !isDefaultPhoto;
+        }
+
+        function toggleTheme() {
+            isDarkTheme = !isDarkTheme;
+            document.body.classList.toggle('dark-theme');
+            const themeToggler = document.querySelector('.theme-toggler');
+            themeToggler.textContent = isDarkTheme ? 'Светлая тема' : 'Темная тема';
+            updateColors();
+        }
+
+        function switchLanguage() {
+            isRussian = !isRussian;
+            const translations = {
+                ru: {
+                    name: "Ермилов Василий Сергеевич",
+                    position: "C++ разработчик, Программист",
+                    age: "20 лет",
+                    address: "Москва, Зеленоград",
+                    phone: "+7 (964) 894-99-43",
+                    email: "esvasek1337@gmail.com",
+                    contactsTitle: "Контакты", // Добавлен заголовок контактов
+                    ageLabel: "Возраст:", // Метка возраста
+                    addressLabel: "Адрес:", // Метка адреса
+                    phoneLabel: "Телефон:", // Метка телефона
+                    emailLabel: "Email:", // Метка email
+                    educationTitle: "Образование",
+                    universityName: "НИУ Московский институт электронной техники (МИЭТ)",
+                    degree: "Бакалавриат, Очная форма, 3 курс",
+                    department: "Кафедра проектирования и конструирования интегральных микросхем",
+                    specialization: "Направление: Электроника и наноэлектроника",
+                    focus: "Специализация: Автоматизация проектирования изделий наноэлектроники",
+                    period: "Период: 2022 - 2026",
+                    skillsTitle: "Навыки",
+                    skill1: "Опыт работы с инженерной графикой и компьютерной визуализацией",
+                    skill2: "Опыт работы с основными структурами данных и алгоритмами",
+                    skill3: "Знание основных принципов объектно-ориентированного программирования",
+                    skill4: "Опыт работы с интегрированными средами разработки (IDE), такими как Visual Studio",
+                    skill5: "Умение работать в команде и коммуникативные навыки",
+                    skill6: "Активное изучение средств САПР",
+                    projectsTitle: "Проекты",
+                    project1Title: "Консольное приложение для управления базой данных студентов",
+                    project1Desc: "Разработка консольного приложения на C++ для управления базой данных студентов.",
+                    project1Features: "Функционал: CRUD-операции (Create, Read, Update, Delete) с использованием файлового хранения данных.",
+                    project2Title: "Проекты на Arduino Uno",
+                    project2Item1: "Светодиодная мигалка (Blink)",
+                    project2Item2: "Управление светодиодами с кнопкой (LED Control with Button)",
+                    project2Item3: "Измерение температуры и влажности (Temperature and Humidity Sensing)",
+                    project2Item4: "Управление сервоприводом (Servo Motor Control)",
+                    project2Item5: "Измерение расстояния с помощью ультразвукового дальномера (Ultrasonic Distance Measurement)",
+                    aboutTitle: "О себе",
+                    personalQualities: "Личные качества:",
+                    interests: "Интересы:",
+                    languages: "Языки:"
+                },
+                en: {
+                    name: "Vasily Ermilov",
+                    position: "C++ Developer, Programmer",
+                    age: "20 years old",
+                    address: "Moscow, Zelenograd",
+                    phone: "+7 (964) 894-99-43",
+                    email: "esvasek1337@gmail.com",
+                    contactsTitle: "Contacts", // Добавлен заголовок контактов
+                    ageLabel: "Age:", // Метка возраста
+                    addressLabel: "Address:", // Метка адреса
+                    phoneLabel: "Phone:", // Метка телефона
+                    emailLabel: "Email:", // Метка email
+                    educationTitle: "Education",
+                    universityName: "National Research University of Electronic Technology (MIET)",
+                    degree: "Bachelor's Degree, Full-time, 3rd year",
+                    department: "Department of Design and Construction of Integrated Circuits",
+                    specialization: "Field: Electronics and Nanoelectronics",
+                    focus: "Specialization: Automation of Nanoelectronic Product Design",
+                    period: "Period: 2022 - 2026",
+                    skillsTitle: "Skills",
+                    skill1: "Experience in engineering graphics and computer visualization",
+                    skill2: "Experience working with basic data structures and algorithms",
+                    skill3: "Knowledge of the principles of object-oriented programming",
+                    skill4: "Experience working with integrated development environments (IDEs) such as Visual Studio",
+                    skill5: "Ability to work in a team and communication skills",
+                    skill6: "Active study of CAD tools",
+                    projectsTitle: "Projects",
+                    project1Title: "Console application for managing a student database",
+                    project1Desc: "Development of a console application in C++ for managing a student database.",
+                    project1Features: "Functionality: CRUD operations (Create, Read, Update, Delete) using file-based data storage.",
+                    project2Title: "Arduino Uno Projects",
+                    project2Item1: "LED Blink",
+                    project2Item2: "LED Control with Button",
+                    project2Item3: "Temperature and Humidity Sensing",
+                    project2Item4: "Servo Motor Control",
+                    project2Item5: "Ultrasonic Distance Measurement",
+                    aboutTitle: "About Me",
+                    personalQualities: "Personal qualities:",
+                    interests: "Interests:",
+                    languages: "Languages:"
+                }
+            };
+
+            const currentLang = isRussian ? 'ru' : 'en';
+            const elements = {
+                name: document.getElementById('name'),
+                position: document.getElementById('position'),
+                age: document.getElementById('age'),
+                address: document.getElementById('address'),
+                phone: document.getElementById('phone'),
+                email: document.getElementById('email'),
+                contactsTitle: document.getElementById('contacts-title'), // Добавлен заголовок контактов
+                ageLabel: document.getElementById('age-label'), // Метка возраста
+                addressLabel: document.getElementById('address-label'), // Метка адреса
+                phoneLabel: document.getElementById('phone-label'), // Метка телефона
+                emailLabel: document.getElementById('email-label'), // Метка email
+                educationTitle: document.getElementById('education-title'),
+                universityName: document.getElementById('university-name'),
+                degree: document.getElementById('degree'),
+                department: document.getElementById('department'),
+                specialization: document.getElementById('specialization'),
+                focus: document.getElementById('focus'),
+                period: document.getElementById('period'),
+                skillsTitle: document.getElementById('skills-title'),
+                skill1: document.getElementById('skill-1'),
+                skill2: document.getElementById('skill-2'),
+                skill3: document.getElementById('skill-3'),
+                skill4: document.getElementById('skill-4'),
+                skill5: document.getElementById('skill-5'),
+                skill6: document.getElementById('skill-6'),
+                projectsTitle: document.getElementById('projects-title'),
+                project1Title: document.getElementById('project-1-title'),
+                project1Desc: document.getElementById('project-1-desc'),
+                project1Features: document.getElementById('project-1-features'),
+                project2Title: document.getElementById('project-2-title'),
+                project2Item1: document.getElementById('project-2-item-1'),
+                project2Item2: document.getElementById('project-2-item-2'),
+                project2Item3: document.getElementById('project-2-item-3'),
+                project2Item4: document.getElementById('project-2-item-4'),
+                project2Item5: document.getElementById('project-2-item-5'),
+                aboutTitle: document.getElementById('about-title'),
+                personalQualities: document.getElementById('personal-qualities'),
+                interests: document.getElementById('interests'),
+                languages: document.getElementById('languages')
+            };
+
+            for (const key in elements) {
+                if (elements[key]) {
+                    elements[key].textContent = translations[currentLang][key];
+                }
+            }
+
+            const languageSwitcher = document.querySelector('.language-switcher');
+            languageSwitcher.textContent = isRussian ? 'RU/EN' : 'EN/RU';
         }
 
         function toggleProject(element) {
@@ -182,6 +419,46 @@
             const arrow = element.querySelector('.arrow');
             arrow.textContent = arrow.textContent === '⬇️' ? '⬆️' : '⬇️';
         }
+
+        function updateColors() {
+            const darkThemeColors = {
+                '--header-bg-color': '#4CAF50',
+                '--header-text-color': 'white',
+                '--border-color': '#fff',
+                '--toggler-bg-color': '#333',
+                '--toggler-text-color': '#eaeaea',
+                '--switcher-bg-color': '#333',
+                '--switcher-text-color': '#eaeaea',
+                '--hover-bg-color': '#444',
+                '--item-bg-light': '#333', /* Темный фон для ячеек */
+                '--item-bg-dark': '#444', /* Дополнительный темный фон */
+                '--item-text-light': '#eaeaea', /* Белый текст */
+                '--item-text-dark': '#eaeaea' /* Белый текст */
+            };
+
+            const lightThemeColors = {
+                '--header-bg-color': '#4CAF50',
+                '--header-text-color': 'white',
+                '--border-color': '#fff',
+                '--toggler-bg-color': '#4CAF50',
+                '--toggler-text-color': 'white',
+                '--switcher-bg-color': '#4CAF50',
+                '--switcher-text-color': 'white',
+                '--hover-bg-color': '#45a049',
+                '--item-bg-light': '#fff', /* Светлый фон для ячеек */
+                '--item-bg-dark': '#f9f9f9', /* Slightly lighter background */
+                '--item-text-light': '#333', /* Темный текст */
+                '--item-text-dark': '#333' /* Темный текст */
+            };
+
+            const themeColors = isDarkTheme ? darkThemeColors : lightThemeColors;
+            for (const key in themeColors) {
+                document.documentElement.style.setProperty(key, themeColors[key]);
+            }
+        }
+
+        // Инициализация цветовой схемы
+        updateColors();
     </script>
 </body>
 </html>
