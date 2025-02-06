@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Резюме - Ермилов Василий Сергеевич</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 20px 0;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .skills ul, .projects ul {
+            list-style: none;
+            padding: 0;
+        }
+        .skills li, .projects li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .project-details {
+            display: none;
+            margin-top: 10px;
+        }
+        .project-title {
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .project-title:hover {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="photo">
+            <!-- Заглушка для фотографии -->
+            <img src="C:\Users\EsVasek\Desktop\myrez\myname.jpg" >
+        </div>
+        <h1>Ермилов Василий Сергеевич</h1>
+        <p>C++ разработчик, Программист</p>
+    </header>
+    <div class="container">
+        <div class="contact-info">
+            <div>
+                <p><strong>Возраст:</strong> 20 лет</p>
+                <p><strong>Адрес:</strong> Москва, Зеленоград</p>
+            </div>
+            <div>
+                <p><strong>Телефон:</strong> +7 (964) 894-99-43</p>
+                <p><strong>Email:</strong> esvasek1337@gmail.com</p>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Образование</h2>
+            <p><strong>НИУ Московский институт электронной техники (МИЭТ)</strong></p>
+            <p>Бакалавриат, Очная форма, 3 курс</p>
+            <p>Кафедра проектирования и конструирования интегральных микросхем</p>
+            <p>Направление: 11.03.04 Электроника и наноэлектроника</p>
+            <p>Специализация: Автоматизация проектирования изделий наноэлектроники</p>
+            <p>Период: 2022 - 2026</p>
+        </div>
+        <div class="section skills">
+            <h2>Навыки</h2>
+            <ul>
+                <li>Опыт работы с инженерной графикой и компьютерной визуализацией</li>
+                <li>Опыт работы с основными структурами данных и алгоритмами</li>
+                <li>Знание основных принципов объектно-ориентированного программирования</li>
+                <li>Опыт работы с интегрированными средами разработки (IDE), такими как Visual Studio</li>
+                <li>Умение работать в команде и коммуникативные навыки</li>
+                <li>Активное изучение средств САПР</li>
+            </ul>
+        </div>
+        <div class="section projects">
+            <h2>Проекты</h2>
+            <ul>
+                <li>
+                    <div class="project-title" onclick="toggleDetails(this)">Консольное приложение для управления базой данных студентов</div>
+                    <div class="project-details">
+                        <p>Разработка консольного приложения на C++ для управления базой данных студентов.</p>
+                        <p>Функционал: CRUD-операции (Create, Read, Update, Delete) с использованием файлового хранения данных.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="project-title" onclick="toggleDetails(this)">Проекты на Arduino Uno</div>
+                    <div class="project-details">
+                        <ul>
+                            <li>Светодиодная мигалка (Blink)</li>
+                            <li>Управление светодиодами с кнопкой (LED Control with Button)</li>
+                            <li>Измерение температуры и влажности (Temperature and Humidity Sensing)</li>
+                            <li>Управление сервоприводом (Servo Motor Control)</li>
+                            <li>Измерение расстояния с помощью ультразвукового дальномера (Ultrasonic Distance Measurement)</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>О себе</h2>
+            <p><strong>Личные качества:</strong> Целеустремленность, стремление к самосовершенствованию, ответственный подход к задачам, способность быстро обучаться.</p>
+            <p><strong>Интересы:</strong> Фотография (любительская), создание и обработка фотографий, музыка, сериалы.</p>
+            <p><strong>Языки:</strong> Английский (Базовый).</p>
+        </div>
+    </div>
+    <script>
+        function toggleDetails(element) {
+            const details = element.nextElementSibling;
+            if (details.style.display === 'block') {
+                details.style.display = 'none';
+            } else {
+                details.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
