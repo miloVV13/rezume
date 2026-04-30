@@ -1,8 +1,8 @@
 :root {
   --primary: #7c3aed;
   --primary-hover: #6d28d9;
-  --bg: #faf5ff;
-  --card: #ffffff;
+  --bg: #fffeff;
+  --card: #faf5ff;
   --text: #2e1065;
   --text-light: #6b7280;
   --border: #e9d5ff;
@@ -181,4 +181,85 @@ footer {
   .controls { position: static; justify-content: center; margin-bottom: 16px; }
   .contact { flex-direction: column; align-items: center; }
   .skills-grid { grid-template-columns: 1fr; }
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 8px 16px;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.btn-download:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+.scroll-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  z-index: 100;
+}
+.scroll-top.visible { opacity: 1; visibility: visible; }
+
+@media print {
+  .controls, .scroll-top, .btn-download { display: none !important; }
+  .container { box-shadow: none; border: none; padding: 0; max-width: 100%; }
+  body { background: #fff; color: #000; }
+  h1, h2, .job-title { color: #000 !important; }
+  .badge { background: #eee !important; color: #333 !important; }
+  a { color: #000 !important; text-decoration: none !important; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.8rem; color: #555; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+/* Скрытая ссылка для пропуска навигации */
+.skip-link {
+  position: absolute; top: -42px; left: 0;
+  background: var(--primary); color: #fff;
+  padding: 8px 12px; z-index: 1000;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+.qr-container {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+.qr-container img {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 6px;
 }

@@ -6,8 +6,20 @@
   <meta name="description" content="Resume of Embedded Software Engineer: STM32, ESP32, C/C++, Python">
   <title>Резюме | Embedded Engineer</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#7c3aed" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b0514" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:title" content="Embedded Software Engineer | Ермилов Василий">
+  <meta property="og:description" content="STM32, ESP32, C/C++, Python. Опыт в НИИМЭ. Открытые проекты на GitHub.">
+  <meta property="og:image" content="https://milovv13.github.io/rezume/assets/myname.jpg">
+  <meta property="og:url" content="https://milovv13.github.io/rezume/">
+  <meta name="twitter:card" content="summary_large_image">
+
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Перейти к содержимому</a>
   <div class="container">
     <header>
       <div class="controls">
@@ -21,7 +33,7 @@
       
       <h1>
         <span lang="ru">Ермилов Василий Сергеевич</span>
-        <span lang="en">Ermilov Vasiliy</span>
+        <span lang="en">Vasily Ermilov</span>
       </h1>
       <div class="subtitle">
         <span lang="ru">C/C++ Разработчик, Программист микроконтроллеров</span>
@@ -35,10 +47,17 @@
         <span>✉️ <a href="mailto:esvasek1337@gmail.com">esvasek1337@gmail.com</a></span>
         <span>🔗 <a href="https://github.com/miloVV13" target="_blank">github.com/miloVV13</a></span>
       </div>
+      <div class="contact">        
+        <span lang="ru">⭐ <a href="https://t.me/agurts" target="_blank">Телеграм</a></span>
+        <span lang="en">⭐ <a href="https://t.me/agurts" target="_blank">Telegram</a></span>
+        <span lang="ru">🅱️ <a href="https://vk.com/esvasek" target="_blank">ВК</a></span>
+        <span lang="en">🅱️ <a href="https://vk.com/esvasek" target="_blank">VK</a></span>
+    </div>
+
     </header>
 
     <!-- Experience -->
-    <section>
+    <section id="main-content" class="reveal">
       <h2>
         <span lang="ru">💼 Опыт работы</span>
         <span lang="en">💼 Work Experience</span>
@@ -48,7 +67,10 @@
           <span lang="ru">АО «НИИМЭ» — Инженер-программист микроконтроллеров</span>
           <span lang="en">JSC «NIIME» — Embedded Software Engineer</span>
         </div>
-        <div class="company">2025 — present · Moscow, Zelenograd</div>
+        <div class="company">
+            <span lang="ru">2025 — н. в. · Москва, Зеленоград</span>
+            <span lang="en">2025 — present · Moscow, Zelenograd</span>
+        </div>
         <ul lang="ru">
           <li>Разработка встроенного ПО для микроконтроллеров: STM32, ESP32, Raspberry Pi Pico</li>
           <li>Реализация цифровых интерфейсов и логики управления на ПЛИС</li>
@@ -67,17 +89,20 @@
     </section>
 
     <!-- Education -->
-    <section>
+    <section class="reveal">
       <h2>
         <span lang="ru">🎓 Образование</span>
         <span lang="en">🎓 Education</span>
       </h2>
       <div class="education">
         <div class="job-title">
-          <span lang="ru">НИУ МИЭТ — Бакалавр</span>
+          <span lang="ru">НИУ МИЭТ — Бакалавриат</span>
           <span lang="en">MIET National Research University — Bachelor's Degree</span>
         </div>
-        <div class="company">2022–2026 · Electronics and Nanoelectronics</div>
+        <div class="company">
+            <span lang="ru">2022—2026</span>
+            <span lang="en">2022—2026</span>
+        </div>
         <div lang="ru">Кафедра: Проектирование и конструирование интегральных микросхем</div>
         <div lang="en">Department: Design and Manufacturing of Integrated Circuits</div>
         <div lang="ru">Направление: Электроника и наноэлектроника</div>
@@ -92,7 +117,7 @@
     </section>
 
     <!-- Skills -->
-    <section>
+    <section class="reveal">
       <h2>
         <span lang="ru">🛠 Технические навыки</span>
         <span lang="en">🛠 Technical Skills</span>
@@ -118,7 +143,7 @@
     </section>
 
     <!-- Projects -->
-    <section>
+    <section class="reveal">
       <h2>
         <span lang="ru">🚀 Проекты</span>
         <span lang="en">🚀 Projects</span>
@@ -158,7 +183,7 @@
 
       <div class="project">
         <div class="project-title">MenuManager — GUI Library for Microcontrollers</div>
-        <div class="project-tech">C/C++ · PlatformIO · Cross-platform · WIP</div>
+        <div class="project-tech">C/C++ · PlatformIO · Cross-platform · WIP · HAL</div>
         <ul lang="ru">
           <li>Библиотека для создания меню на TFT/OLED/LCD дисплеях</li>
           <li>Архитектура с разделением логики и отображения для лёгкого портирования</li>
@@ -174,7 +199,7 @@
     </section>
 
     <!-- About -->
-    <section>
+    <section class="reveal">
       <h2>
         <span lang="ru">ℹ️ О себе</span>
         <span lang="en">ℹ️ About Me</span>
@@ -197,9 +222,15 @@
         <span lang="en">Last updated: April 2026</span>
         · <a href="https://github.com/miloVV13/rezume" target="_blank">GitHub</a>
       </p>
+      <ul lang="ru">
+        <a href="assets/cv_ru.pdf" download class="btn-download">💾 Скачать PDF-версию</a>
+      </ul>
+      <ul lang="en">
+        <a href="assets/cv_en.pdf" download class="btn-download">💾 Download PDF-version</a>
+      </ul>
     </footer>
   </div>
-
+  <button class="scroll-top" id="scrollTopBtn" title="Наверх">👆</button>
   <script src="script.js"></script>
 </body>
 </html>
