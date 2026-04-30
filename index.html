@@ -215,20 +215,32 @@
         <li><strong>Languages:</strong> Russian (native), English (technical)</li>
       </ul>
     </section>
-
+    
     <footer>
-      <p>
-        <span lang="ru">Последнее обновление: Апрель 2026</span>
-        <span lang="en">Last updated: April 2026</span>
-        · <a href="https://github.com/miloVV13/rezume" target="_blank">GitHub</a>
-      </p>
-      <ul lang="ru">
-        <a href="assets/cv_ru.pdf" download class="btn-download">💾 Скачать PDF-версию</a>
-      </ul>
-      <ul lang="en">
-        <a href="assets/cv_en.pdf" download class="btn-download">💾 Download PDF-version</a>
-      </ul>
-    </footer>
+      <div class="footer-content">
+        <!-- Левая часть -->
+        <div class="footer-left">
+          <p class="footer-date">
+            <span lang="ru">📅 Обновлено: Апрель 2026</span>
+            <span lang="en">📅 Updated: April 2026</span>
+            · <a href="https://github.com/miloVV13/rezume" target="_blank" class="footer-link">GitHub</a>
+          </p>
+          <div class="footer-buttons">
+            <a href="assets/cv_ru.pdf" download class="btn-download" lang="ru">💾 Скачать PDF</a>
+            <a href="assets/cv_en.pdf" download class="btn-download" lang="en">💾 Download PDF</a>
+          </div>
+        </div>
+        
+        <!-- Правая часть -->
+        <div class="footer-right">
+          <div class="qr-box">
+          <img src="assets/qr.png" alt="QR-код резюме" loading="lazy">
+          <span class="qr-hint" lang="ru">Наведи камеру</span>
+          <span class="qr-hint" lang="en">Scan to save</span>
+        </div>
+      </div>
+    </div>
+  </footer>
   </div>
   <button class="scroll-top" id="scrollTopBtn" title="Наверх">👆</button>
   <script src="script.js"></script>

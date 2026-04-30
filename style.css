@@ -263,3 +263,96 @@ footer {
   border-radius: 8px;
   margin-bottom: 6px;
 }
+
+/* ===== Footer Layout ===== */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Было: center → теперь верхнее выравнивание */
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start; 
+  text-align: left;        
+}
+
+.footer-date {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin: 0;
+  text-align: left;       
+  width: 100%;            
+}
+
+/* ===== Сохраняем центрирование ТОЛЬКО на мобильных ===== */
+@media (max-width: 650px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-left { 
+    align-items: center;  
+    text-align: center; 
+  }
+  .footer-date { 
+    text-align: center; 
+    width: auto; 
+  }
+  .footer-buttons { justify-content: center; }
+  .qr-box { width: 100%; max-width: 150px; }
+}
+
+/* ===== QR Box ===== */
+.footer-right {
+  flex-shrink: 0;
+}
+
+.qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: var(--code-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.qr-box img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.qr-hint {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  text-align: center;
+}
+
+/* ===== Language Toggle in Footer ===== */
+body.lang-en [lang="ru"] { display: none !important; }
+body.lang-en [lang="en"] { display: inline !important; }
+[lang="en"]:not(body.lang-en *) { display: none !important; }
+
+/* ===== Responsive (мобильные) ===== */
+@media (max-width: 650px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-left { align-items: center; }
+  .footer-buttons { justify-content: center; }
+  .qr-box { width: 100%; max-width: 150px; }
+  .qr-box img { width: 100%; height: auto; }
+}
