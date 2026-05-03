@@ -265,8 +265,8 @@ footer {
   position: fixed;
   bottom: 24px;
   right: 24px; /* 👈 Возвращаем вправо */
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   background: var(--primary);
   color: #fff;
   border: none;
@@ -440,3 +440,40 @@ body.lang-en [lang="en"] { display: inline !important; }
   .qr-box { width: 100%; max-width: 150px; }
   .qr-box img { width: 100%; height: auto; }
 }
+
+/* ===== IDE & Toolchains Section ===== */
+.ide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.ide-card {
+  background: var(--code-bg);
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.ide-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.15);
+}
+.ide-card strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-size: 1.05rem;
+}
+.ide-features {
+  padding-left: 20px;
+  margin-top: 8px;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.ide-features li { margin-bottom: 6px; }
+
+/* Language toggle safety for this section */
+body.lang-en .ide-features[lang="ru"] { display: none !important; }
+body.lang-en .ide-features[lang="en"] { display: block !important; }
