@@ -54,12 +54,74 @@ header {
   position: relative;
 }
 
+/* ===== ФИКСИРОВАННЫЕ КНОПКИ УПРАВЛЕНИЯ ===== */
 .controls {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
+  position: fixed !important;
+  bottom: 24px !important;
+  left: 24px !important;
+  top: auto !important;
+  right: auto !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  flex-direction: row;
   gap: 8px;
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 8px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transform: none !important; /* Разрывает связь с transform родителя */
+  pointer-events: auto;
+}
+
+.btn-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.btn-toggle:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
+@media (max-width: 600px) {
+  .controls {
+    flex-direction: column !important;
+    padding: 8px !important;
+    gap: 8px !important;
+    bottom: 20px !important;
+    left: 20px !important;
+    border-radius: 20px !important;
+  }
+  
+  .btn-toggle {
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    font-size: 1.4rem !important;
+  }
+
+  /* 🔒 АБСОЛЮТНОЕ скрытие текста в кнопках на мобильных */
+  .btn-toggle span[lang],
+  .btn-toggle [lang] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+    font-size: 0 !important;
+  }
 }
 
 .btn-toggle {
@@ -202,7 +264,7 @@ footer {
 .scroll-top {
   position: fixed;
   bottom: 24px;
-  right: 24px;
+  right: 24px; /* 👈 Возвращаем вправо */
   width: 40px;
   height: 40px;
   background: var(--primary);
@@ -213,10 +275,32 @@ footer {
   font-size: 1.2rem;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s;
-  z-index: 100;
+  transition: all 0.3s ease;
+  z-index: 999;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.scroll-top.visible { opacity: 1; visibility: visible; }
+
+.scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top:hover {
+  transform: translateY(-2px);
+  background: var(--primary-hover);
+}
+
+@media (max-width: 600px) {
+  .scroll-top {
+    bottom: 24px;
+    right: 24px;
+    width: 36px;
+    height: 36px;
+  }
+}
 
 @media print {
   .controls, .scroll-top, .btn-download { display: none !important; }
