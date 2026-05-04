@@ -98,8 +98,8 @@ header {
     flex-direction: column !important;
     padding: 8px !important;
     gap: 8px !important;
-    bottom: 20px !important;
-    left: 20px !important;
+    bottom: 12px !important;
+    left: 27px !important;
     border-radius: 20px !important;
   }
   
@@ -207,6 +207,11 @@ li { margin-bottom: 4px; }
   padding: 12px;
   border-radius: 8px;
   border: 1px solid var(--border);
+  transition: background-color 0.3s ease, 
+            border-color 0.3s ease, 
+            color 0.3s ease, 
+            transform 0.2s ease, 
+            box-shadow 0.2s ease;
 }
 .skill-category strong { display: block; margin-bottom: 6px; color: var(--primary); }
 .badge {
@@ -218,6 +223,11 @@ li { margin-bottom: 4px; }
   font-size: 0.85rem;
   margin: 2px 4px 2px 0;
   font-weight: 500;
+}
+
+.skill-category:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.15);
 }
 
 .project-links { margin-top: 8px; }
@@ -270,7 +280,7 @@ footer {
   background: var(--primary);
   color: #fff;
   border: none;
-  border-radius: 50%;
+  border-radius: 27%;
   cursor: pointer;
   font-size: 1.2rem;
   opacity: 0;
@@ -295,10 +305,10 @@ footer {
 
 @media (max-width: 600px) {
   .scroll-top {
-    bottom: 24px;
-    right: 24px;
-    width: 36px;
-    height: 36px;
+    bottom: 28px;
+    right: 28px;
+    width: 50px;
+    height: 50px;
   }
 }
 
@@ -453,7 +463,12 @@ body.lang-en [lang="en"] { display: inline !important; }
   padding: 16px;
   border-radius: 10px;
   border: 1px solid var(--border);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* 👈 Исправление: перечисляем ВСЕ свойства, которые меняются при смене темы */
+  transition: background-color 0.3s ease, 
+              border-color 0.3s ease, 
+              color 0.3s ease, 
+              transform 0.2s ease, 
+              box-shadow 0.2s ease;
 }
 .ide-card:hover {
   transform: translateY(-3px);
@@ -477,3 +492,5 @@ body.lang-en [lang="en"] { display: inline !important; }
 /* Language toggle safety for this section */
 body.lang-en .ide-features[lang="ru"] { display: none !important; }
 body.lang-en .ide-features[lang="en"] { display: block !important; }
+
+
