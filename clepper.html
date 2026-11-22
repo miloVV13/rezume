@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>clepper — video to vertical clips</title>
+  <style>
+    :root { color-scheme: light dark; --fg:#1b1b1f; --muted:#5f6368; --bg:#ffffff; --line:#e5e7eb; --accent:#0b7285; --card:#f6f8fa; }
+    @media (prefers-color-scheme: dark) { :root { --fg:#e8eaed; --muted:#9aa0a6; --bg:#111214; --line:#2a2d31; --accent:#4dd0e1; --card:#17191c; } }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+    main { max-width: 860px; margin: 0 auto; padding: 56px 22px 72px; }
+    h1 { font-size: 2.4rem; line-height:1.15; margin:0 0 10px; letter-spacing:-.02em; }
+    h2 { font-size: 1.2rem; margin: 36px 0 10px; }
+    p { margin: 0 0 14px; }
+    .lead { font-size: 1.15rem; color: var(--muted); max-width: 720px; }
+    .tag { display:inline-block; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:14px; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap:14px; margin:22px 0; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 18px 16px; }
+    .card h3 { margin:0 0 6px; font-size:1rem; }
+    .card p { margin:0; color:var(--muted); font-size:.94rem; }
+    nav { display:flex; gap:18px; flex-wrap:wrap; padding-bottom:22px; border-bottom:1px solid var(--line); margin-bottom:36px; font-size:.95rem; }
+    a { color:var(--accent); }
+    footer { margin-top:56px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:.9rem; }
+    code { background:rgba(127,127,127,.14); padding:2px 5px; border-radius:5px; }
+    .actions { display:flex; gap:14px; flex-wrap:wrap; margin-top:26px; }
+    .button { display:inline-block; padding:10px 16px; border-radius:10px; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; }
+    .button.secondary { background:transparent; color:var(--accent); border:1px solid var(--accent); }
+  </style>
+</head>
+<body>
+<main>
+  <nav>
+    <a href="./clepper.html">clepper</a>
+    <a href="./terms.html">Terms of Service</a>
+    <a href="./privacy.html">Privacy Policy</a>
+  </nav>
+
+  <div class="tag">Desktop video tool</div>
+  <h1>Long videos → vertical clips with subtitles</h1>
+  <p class="lead">clepper is a local desktop application that turns long recordings into short vertical clips for TikTok, Reels and Shorts. It transcribes speech, finds engaging moments, burns in styled subtitles, and can upload finished clips to TikTok with the creator’s permission.</p>
+
+  <div class="actions">
+    <a class="button" href="./terms.html">Terms of Service</a>
+    <a class="button secondary" href="./privacy.html">Privacy Policy</a>
+  </div>
+
+  <h2>What it does</h2>
+  <div class="grid">
+    <div class="card"><h3>Local speech recognition</h3><p>Whisper runs on the user’s computer, producing word-level timestamps for accurate subtitles.</p></div>
+    <div class="card"><h3>Highlight detection</h3><p>Heuristics and optional LLM selection find self-contained, engaging moments in long videos.</p></div>
+    <div class="card"><h3>Vertical rendering</h3><p>Creates 9:16 MP4 clips with a blurred background, center crop or original framing.</p></div>
+    <div class="card"><h3>Styled subtitles</h3><p>Burns in captions with active-word highlighting, outlines and TikTok-friendly styling.</p></div>
+    <div class="card"><h3>TikTok integration</h3><p>With explicit authorization, uploads finished clips through TikTok’s official Content Posting API.</p></div>
+    <div class="card"><h3>Local-first privacy</h3><p>Videos and transcripts stay on the user’s machine unless the user chooses to upload or use an external service.</p></div>
+  </div>
+
+  <h2>How it works</h2>
+  <p>The user selects a video file or provides a link, chooses a processing profile, and reviews the selected moments. clepper renders the clips locally. If the user connects a TikTok account, the selected clip, caption and privacy settings are sent to TikTok only when the user starts an upload.</p>
+
+  <h2>Contact</h2>
+  <p>Questions: <a href="mailto:your-email@example.com">your-email@example.com</a> or <a href="https://github.com/milovv13/rezume/issues">open an issue on GitHub</a>.</p>
+
+  <footer>
+    <p>© 2026 clepper. TikTok is a trademark of its respective owner. This site is used for app information and developer review.</p>
+  </footer>
+</main>
+</body>
+</html>
